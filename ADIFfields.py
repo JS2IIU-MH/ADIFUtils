@@ -31,7 +31,7 @@ NUM_TABLE_ITEMS = 4
 OUT_FILENAME = 'ADIFfields.csv'
 OUT_FILENAME_FIELD_ONLY = 'ADIFfields_only.csv'
 
-class ADIFfields:
+class ADIF_fields:
     '''class ADIFfields
 
         ADIFfields class handles ADIF Field Headers.
@@ -59,10 +59,10 @@ class ADIFfields:
 
         # extract ADIF field list table, class=fieldtable, second one
         table = soup.find_all('table', {'class':'fieldtable'})[1]
-        tr = table.find_all('td')
+        table_td = table.find_all('td')
         all_data_list = []
         _i = 0
-        for field in tr:
+        for field in table_td:
             if _i % NUM_TABLE_ITEMS == ID_FIELD_NAME:
                 # Field Name
                 tmp_field = field.get_text()
@@ -100,8 +100,8 @@ class ADIFfields:
     def get_field_list(self) -> list:
         '''get_field_list returns list of fields'''
         out_list = []
-        for s in self.df_all[ TABLE_INDEX[ID_FIELD_NAME] ]:
-            out_list.append(s)
+        for each_field_name in self.df_all[ TABLE_INDEX[ID_FIELD_NAME] ]:
+            out_list.append(each_field_name)
         return out_list
 
     @classmethod
@@ -149,15 +149,19 @@ class ADIFfields:
 
 
 def main():
-    af = ADIFfields()
+    '''main()
 
-    print(af.get_all_fields())
-    print(af.get_fields())
-    print(af.get_field_list())
-    print(af.get_table_index())
+        main function to test ADIFfields() class methods
+    '''
+    adif_fields = ADIF_fields()
 
-    af.save_all_fields()
-    af.save_fields()
+    print(adif_fields.get_all_fields())
+    print(adif_fields.get_fields())
+    print(adif_fields.get_field_list())
+    print(adif_fields.get_table_index())
+
+    adif_fields.save_all_fields()
+    adif_fields.save_fields()
 
 
 if __name__ == '__main__':
