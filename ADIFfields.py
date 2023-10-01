@@ -32,6 +32,14 @@ OUT_FILENAME = 'ADIFfields.csv'
 OUT_FILENAME_FIELD_ONLY = 'ADIFfields_only.csv'
 
 class ADIFfields:
+    '''class ADIFfields
+
+        ADIFfields class handles ADIF Field Headers.
+        Args:
+            None
+        Returns:
+            None
+    '''
     def __init__(self):
         # ADIFfields.csv is existing?
         if os.path.isfile(OUT_FILENAME):
@@ -42,13 +50,13 @@ class ADIFfields:
             self.df_all.to_csv(OUT_FILENAME)
 
     def fetch_fields(self):
-        # fetch field table data from adif.org
+        '''fetch field table data from adif.org'''
         try:
             response = requests.get(URL, timeout=(3.0, 7.5))
         except requests.exceptions.Timeout:
             pass
         soup = BeautifulSoup(response.content, 'html.parser')
-        
+
         # extract ADIF field list table, class=fieldtable, second one
         table = soup.find_all('table', {'class':'fieldtable'})[1]
         tr = table.find_all('td')
@@ -69,39 +77,51 @@ class ADIFfields:
                 tmp_description = field.get_text()
                 lines = tmp_description.splitlines()
                 tmp_description = ''.join(lines)
-                
+
                 all_data_list.append( [tmp_field,
                                        tmp_data_type,
                                        tmp_enum,
                                        tmp_description.strip()] )
-            
+
             _i += 1
-        
-        
+
+
         self.df_all = pd.DataFrame(all_data_list, columns=TABLE_INDEX)
 
+
     def get_all_fields(self) -> pd.DataFrame:
-        # get_all_fields returns all of field data
+        '''get_all_fields returns all of field data'''
         return self.df_all
 
-    # get_fields returns DataFrame
     def get_fields(self) -> pd.Series:
+        '''get_fields returns DataFrame'''
         return self.df_all[ TABLE_INDEX[ID_FIELD_NAME] ]
-    
+
     def get_field_list(self) -> list:
-        # get_field_list returns list of fields
+        '''get_field_list returns list of fields'''
         out_list = []
         for s in self.df_all[ TABLE_INDEX[ID_FIELD_NAME] ]:
             out_list.append(s)
         return out_list
-    
+
     @classmethod
     def get_table_index(cls) -> list:
-        # get_table_index returns list of index: TABLE_INDEX
+        '''get_table_index
+
+            get_table_index, @classmethod, returns list of index: TABLE_INDEX.
+
+            Args:
+                None
+            Returns:
+                list: list of index: TABLE_INDEX
+        '''
         return TABLE_INDEX
-    
+
     def save_all_fields(self, csvfilepath=OUT_FILENAME):
-        # save df_all to file
+        '''save df_all to file
+            Args:
+                csvfilepath (str): csv file path,
+        '''
         if os.path.isfile(csvfilepath):
             print(f'{csvfilepath} is existing.')
         else:
@@ -109,9 +129,12 @@ class ADIFfields:
                 self.df_all.to_csv(csvfilepath)
             except IOError:
                 print(f'cannot save file: {csvfilepath}')
-            
+
     def save_fields(self, csvfilepath=OUT_FILENAME_FIELD_ONLY):
-        # save df_all['Field Name] to csv file
+        '''save df_all['Field Name] to csv file
+            Args:
+                csvfilepath (str): to save pd.Series of 'Field Name' 
+        '''
         if os.path.isfile(csvfilepath):
             print(f'{csvfilepath} is existing.')
         else:
@@ -121,23 +144,21 @@ class ADIFfields:
                 print(f'cannot save file: {csvfilepath}')
 
     def print_all(self):
-        # just print `df_all` on console
+        '''just print `df_all` on console'''
         return print(self.df_all)
 
 
 def main():
-    
     af = ADIFfields()
-    
+
     print(af.get_all_fields())
     print(af.get_fields())
     print(af.get_field_list())
     print(af.get_table_index())
-    
+
     af.save_all_fields()
     af.save_fields()
-    
+
 
 if __name__ == '__main__':
     main()
-
