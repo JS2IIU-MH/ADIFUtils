@@ -2,7 +2,7 @@
 ADIF - utility tools for the Amateur Data Interchange Format
 
 
-## class ADIFfields.ADIFfields
+## class ADIF_fields.ADIFfields
 
 ```
 __init__(self)
