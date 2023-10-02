@@ -1,6 +1,7 @@
 # ADIFUtils
 ADIF - utility tools for the Amateur Data Interchange Format
 
+[![Pylint](https://github.com/JS2IIU-MH/ADIFUtils/actions/workflows/pylint.yml/badge.svg)](https://github.com/JS2IIU-MH/ADIFUtils/actions/workflows/pylint.yml)
 
 ## class ADIF_fields.ADIFfields
 
