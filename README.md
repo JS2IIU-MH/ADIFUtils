@@ -2,6 +2,7 @@
 ADIF - utility tools for the Amateur Data Interchange Format
 
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint)
+[![Pylint](https://github.com/JS2IIU-MH/ADIFUtils/actions/workflows/pylint.yml/badge.svg)](https://github.com/JS2IIU-MH/ADIFUtils/actions/workflows/pylint.yml)
 
 ## class adif_fields.ADIFfields
 
