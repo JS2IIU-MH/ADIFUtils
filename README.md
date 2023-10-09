@@ -1,8 +1,9 @@
 # ADIFUtils
 ADIF - utility tools for the Amateur Data Interchange Format
 
+[![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint)
 
-## class ADIF_fields.ADIFfields
+## class adif_fields.ADIFfields
 
 ```
 __init__(self)
@@ -58,6 +59,9 @@ print_all(self)
 Just print `df_all` on console.
 
 
+## Reference
 
+- [The Independent ADIF Site](http://adif.org/)
+- [Released ADIF Version 3.1.0, updated 2019/05/21](https://www.adif.org/310/ADIF_310.htm)
 
 
