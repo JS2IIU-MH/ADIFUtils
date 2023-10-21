@@ -73,7 +73,7 @@ class Application(tk.Frame):
                                  columns=column_list,
                                  selectmode=tk.EXTENDED,
                                  height=10)
-        
+
         # style
         style = ttk.Style()
         style.configure('Treeview.Heading', font=('Calibri', 11))
