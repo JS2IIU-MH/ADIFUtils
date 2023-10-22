@@ -77,8 +77,9 @@ class AdifToDataFrame():
 
 def main():
     ''' main func for test purpose '''
-    # sample_file = 'sample_adif.adi'
-    sample_file = '2023-10-16_213417_wsjtx_log.adi'
+    sample_file = 'sample_adif.adi'
+    # sample_file = '2023-10-16_213417_wsjtx_log.adi'
+    # output_csv_file = 'adif_data.csv'
 
     adif2df = AdifToDataFrame()
 
@@ -87,6 +88,8 @@ def main():
     df_adif = adif2df.list_to_dataframe(in_list=all_list)
 
     print(df_adif)
+
+    # df_adif.to_csv(output_csv_file)
 
 
 if __name__ == '__main__':

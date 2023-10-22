@@ -65,8 +65,10 @@ class Application(tk.Frame):
         _df = pd.read_csv(sample_file_path, comment='#')
         column_list = _df.columns.to_list()
         self.num_data = len(_df)
-        # ind_time_on = column_list.index('TIME_ON')
-        # ind_time_off = column_list.index('TIME_OFF')
+        # zero-fill
+        ind_time_on = column_list.index('TIME_ON')
+        ind_time_off = column_list.index('TIME_OFF')
+        # print(ind_time_on, ind_time_off)
 
         # treeview
         self.tree = ttk.Treeview(master,
@@ -92,13 +94,11 @@ class Application(tk.Frame):
         # record
         for i in range(len(_df)):
             values = _df.iloc[i].to_list()
-
+            # zero padding, 'TIME_ON', 'TIME_OFF'
             # print(values[7], type(values[9]))
-            target_columns_index = [7, 9]
+            target_columns_index = [ind_time_on, ind_time_off]
             for j in target_columns_index:
-                # tmp = '{:06d}'.format(values[j])
-                # print(values[j], tmp)
-                # values[j] = '{:06d}'.format(values[j])
+                # zero padding
                 values[j] = f'{values[j]:06}'
 
             self.tree.insert(parent='', tags=i, index=tk.END, iid=i, values=values)

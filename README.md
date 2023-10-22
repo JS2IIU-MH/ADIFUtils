@@ -77,6 +77,10 @@ Example of output DataFrame
 
 Show ADIF data on GUI, tkinter treeview widget. This sample reads csv file converted from original ADIF (*.adi) file by `adif_to_dataframe.py` module.
 
+- ADIF files cannot be read by this application in their entirety. Therefore, *.adi files must be read in with adif_to_dataframe.py and converted to csv format.
+- Specify the path to the csv file to be read in the variable sample_csv in adif_to_dataframe.py.
+- The application is just listed in Treeview. Other functions will be developed in the future.
+
 <div style="text-align:center">
 <img src="doc/adif_treeview.png" width=650>
 </div>
@@ -92,6 +96,7 @@ Show ADIF data on GUI, tkinter treeview widget. This sample reads csv file conve
 - [pandas 辞書型からDataFrameを生成｜インデックスとコラムの設定も！ - YutaKaのPython教室](https://www.yutaka-note.com/entry/pandas_dict)
 - [pandasで任意の位置の値を取得・変更するat, iat, loc, iloc | note.nkmk.me](https://note.nkmk.me/python-pandas-at-iat-loc-iloc/)
 - [consider-using-with / R1732 - Pylint 3.1.0-dev0 documentation](https://pylint.pycqa.org/en/latest/user_guide/messages/refactor/consider-using-with.html)
+- [Pythonのf文字列（フォーマット済み文字列リテラル）の使い方 | note.nkmk.me](https://note.nkmk.me/python-f-strings/)
 
 ### Color code
 - [WEB色見本 原色大辞典 - HTMLカラーコード](https://www.colordic.org/)
