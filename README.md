@@ -6,6 +6,7 @@ ADIF - utility tools for the Amateur Data Interchange Format
 [![Pylint](https://github.com/JS2IIU-MH/ADIFUtils/actions/workflows/pylint.yml/badge.svg)](https://github.com/JS2IIU-MH/ADIFUtils/actions/workflows/pylint.yml)
 -->
 ![](https://byob.yarr.is/JS2IIU-MH/ADIFUtils/passing_lints)
+![](https://byob.yarr.is/JS2IIU-MH/ADIFUtils/time)
 [![License: GPL](https://img.shields.io/badge/License-GPL_3.0-blue)](LICENSE)
 
 ## class adif_fields.ADIFfields
